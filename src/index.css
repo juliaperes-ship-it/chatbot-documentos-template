@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 14%;
+
+    /* ======================================================================
+       COR DA MARCA DO CLIENTE - troque estas tres linhas.
+       ======================================================================
+
+       O padrao aqui e um cinza-azulado escuro, escolhido por ser seguro: com
+       texto branco em cima ele passa folgado em contraste. Ao trocar pela cor do
+       cliente, MEÇA antes de aceitar - muita cor de marca reprova.
+
+       O WCAG AA pede 4,5:1 para texto normal, e os botoes e o balao do usuario
+       usam 14px. Laranja e amarelo vivos costumam ficar entre 2:1 e 3,5:1 com
+       texto branco: reprovam. Nesse caso ha duas saidas, as duas legitimas -
+       manter a cor exata e usar texto ESCURO em cima (costuma dar acima de 5:1),
+       ou escurecer a cor o minimo necessario e manter o texto branco.
+
+       Para medir, em Python:
+
+         def lum(r,g,b):
+             f=lambda v:(v/255)/12.92 if v/255<=0.04045 else (((v/255)+0.055)/1.055)**2.4
+             return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b)
+         l1,l2 = sorted([lum(255,255,255), lum(*rgb_da_marca)], reverse=True)
+         print((l1+0.05)/(l2+0.05))     # precisa dar 4.5 ou mais
+
+       Converta a cor para HSL e confira o round-trip: colorsys.rgb_to_hls devolve
+       (h, l, s) - nessa ordem, e nao (h, s, l).
+       ====================================================================== */
+    --primary: 220 13% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    /* A mesma cor, escurecida ao minimo necessario para servir de TEXTO sobre
+       fundo claro.
+       Existe porque a variante `link` do shadcn/ui usa `text-primary`: a cor da
+       marca virando letra de 14px sobre branco. Mesmo uma cor que passa como
+       SUPERFICIE pode reprovar como TEXTO, e esse caso escapa de quem so testou
+       os botoes. */
+    --primary-ink: 220 13% 18%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 220 13% 14%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 13% 14%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 220 13% 18%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-ink: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Inter carregada por <link> no index.html, nao por pacote npm: dependencia
+       exigiria atualizar o bun.lockb, e foi isso que quebrou o build antes. */
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-feature-settings: "cv11", "ss01";
+    min-width: 320px;
+    min-height: 100dvh;
+    letter-spacing: 0;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+}

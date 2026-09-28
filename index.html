@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TROQUE estas cinco linhas pelo nome do cliente. O titulo aparece na aba do
+         navegador e nos resultados de busca; a descricao, quando o link e
+         compartilhado. -->
+    <title>Assistente de Procedimentos</title>
+    <meta name="description" content="Assistente para consulta de procedimentos internos." />
+    <meta name="author" content="" />
+    <meta property="og:title" content="Assistente de Procedimentos" />
+    <meta property="og:description" content="Assistente para consulta de procedimentos internos." />
+    <meta property="og:type" content="website" />
+
+    <!-- Coloque o favicon do cliente em public/favicon.png. Um bom atalho: recortar
+         so o simbolo do logo, sem o texto - ver a secao de marca no README. -->
+    <link rel="icon" href="/favicon.png" type="image/png" />
+
+    <!-- Inter por <link> e nao por pacote npm: a fonte vira dependencia do build e
+         some do bundle, em vez de virar 300 KB que o usuario baixa sem precisar. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

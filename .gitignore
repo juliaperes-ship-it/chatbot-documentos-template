@@ -1,0 +1,38 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Documentos de processo do cliente: ficam fora do git (ver BACKEND.md)
+*.docx
+
+# Variaveis de ambiente locais. O .env.example mostra quais sao.
+.env
+.env.local
+
+# Os documentos originais do cliente NUNCA entram no git deste template.
+# O conteudo extraido e o seed gerado tambem nao: eles pertencem ao repositorio do
+# projeto do cliente, que deve ser privado.
+documentos-fonte/
+documentos-extraidos/
+supabase/migrations/*seed_documentos.sql

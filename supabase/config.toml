@@ -1,0 +1,4 @@
+project_id = "SEU_PROJECT_REF"
+
+[functions.chat-agent]
+verify_jwt = false
